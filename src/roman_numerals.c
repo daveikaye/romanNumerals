@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 int roman_letter_to_arabic_number(char roman_letter) {
 
@@ -28,6 +29,11 @@ int roman_letter_to_arabic_number(char roman_letter) {
 
 int to_arabic(char *roman)
 {
+    if (roman == NULL) {
+
+        return -1;
+    }
+
     int i = 0;
     int arabic = 0;
     int roman_length = strlen(roman);
@@ -50,17 +56,23 @@ int to_arabic(char *roman)
         }
     }
 
-    return arabic;
+    return arabic <= 3999 && arabic > 0 ? arabic : -1;
 }
 
 char* concat_strings(char* target, char* source) {
-    target = realloc(target, sizeof(source));
+    target = target == NULL ? malloc(sizeof(source)+1) : realloc(target, sizeof(source)+sizeof(target)+1);
+
     strcat(target, source);
 
     return target;
 }
 
 char* to_roman(int arabic) {
+    if (arabic > 3999) {
+
+        return NULL;
+    }
+
     const int numbers[] = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
     const char* letters[] = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
@@ -77,8 +89,14 @@ char* to_roman(int arabic) {
 }
 
 char* add(char* number1, char* number2) {
+    int arabic1 = to_arabic(number1);
+    int arabic2 = to_arabic(number2);
 
-    return to_roman(to_arabic(number1) + to_arabic(number2));
+    if (arabic1 > 0 && arabic2 > 0) {
+        return to_roman(arabic1 + arabic2);
+    }
+
+    return NULL;
 }
 
 char* subtract(char* number1, char* number2) {
@@ -88,6 +106,9 @@ char* subtract(char* number1, char* number2) {
 
 main()
 {
-    printf("%s\n", add("IX", "X"));
-    printf("%s\n", subtract("X", "IX"));
+    //printf("%s\n", add("MMMCMXCIX", NULL));
+    //printf("%s\n", subtract("X", "IX"));
+
+    //printf("%i\n", to_arabic("xi"));
+    printf("%s\n", upper_string("x"));
 }

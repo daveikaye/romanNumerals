@@ -27,8 +27,13 @@ START_TEST(converts_to_arabic)
     ck_assert_int_eq(to_arabic("II"), 2);
     ck_assert_int_eq(to_arabic("VI"), 6);
     ck_assert_int_eq(to_arabic("IV"), 4);
+    ck_assert_int_eq(to_arabic("MMMCMXCIX"), 3999);
+
 
     //Check error conditions
+    ck_assert_int_eq(to_arabic("MMMCMXCX"), -1);
+    ck_assert_int_eq(to_arabic(""), -1);
+    ck_assert_int_eq(to_arabic(NULL), -1);
 }
 END_TEST
 
@@ -48,8 +53,12 @@ START_TEST(converts_to_roman)
         ck_assert_str_eq(to_roman(500), "D");
         ck_assert_str_eq(to_roman(900), "CM");
         ck_assert_str_eq(to_roman(1000), "M");
+        ck_assert_str_eq(to_roman(3999), "MMMCMXCIX");
 
         //Check error conditions
+        ck_assert_ptr_eq(to_roman(-1), NULL);
+        ck_assert_ptr_eq(to_roman(-0), NULL);
+        ck_assert_ptr_eq(to_roman(4000), NULL);
     }
 END_TEST
 
@@ -58,6 +67,10 @@ START_TEST(adds)
         ck_assert_str_eq(add("IV", "V"), "IX");
 
         //Check error conditions
+        ck_assert_ptr_eq(add("MMMCMXCIX", "I"), NULL);
+        ck_assert_ptr_eq(add("MMMCMXCIX", NULL), NULL);
+        ck_assert_ptr_eq(add(NULL, "I"), NULL);
+        ck_assert_ptr_eq(add(NULL, NULL), NULL);
     }
 END_TEST
 

@@ -82,7 +82,7 @@ START_TEST(subtracts)
     }
 END_TEST
 
-Suite * money_suite(void)
+Suite * roman_numerals_suite(void)
 {
     Suite *s;
     TCase *tcase_converts_to_arabic;
@@ -121,7 +121,7 @@ int main(void)
     Suite *s;
     SRunner *sr;
 
-    s = money_suite();
+    s = roman_numerals_suite();
     sr = srunner_create(s);
 
     srunner_run_all(sr, CK_NORMAL);

@@ -76,6 +76,10 @@ END_TEST
 START_TEST(subtracts)
 {
     ck_assert_str_eq(subtract("V", "IV"), "I");
+
+    //Check error conditions
+    ck_assert_ptr_eq(subtract("IV", "V"), NULL);
+    ck_assert_ptr_eq(subtract("IV", NULL), NULL);
 }
 END_TEST
 
@@ -85,6 +89,7 @@ Suite * roman_numerals_suite(void)
     TCase *tcase_converts_to_arabic;
     TCase *tcase_converts_to_roman;
     TCase *tcase_adds;
+    TCase *tcase_subtracts;
 
     s = suite_create("Roman Numerals");
 
@@ -102,6 +107,11 @@ Suite * roman_numerals_suite(void)
     tcase_add_checked_fixture(tcase_adds, setup, teardown);
     tcase_add_test(tcase_adds, adds);
     suite_add_tcase(s, tcase_adds);
+
+    tcase_subtracts = tcase_create("Subtracts");
+    tcase_add_checked_fixture(tcase_subtracts, setup, teardown);
+    tcase_add_test(tcase_subtracts, subtracts);
+    suite_add_tcase(s, tcase_subtracts);
 
     return s;
 }

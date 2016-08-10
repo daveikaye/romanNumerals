@@ -1,3 +1,4 @@
+#include <string.h>
 
 int roman_letter_to_arabic_number(char roman_letter) {
 
@@ -25,5 +26,14 @@ int roman_letter_to_arabic_number(char roman_letter) {
 
 int to_arabic(char *roman)
 {
-    return roman_letter_to_arabic_number(*roman);
+    int i = 0;
+    int arabic = 0;
+    int roman_length = strlen(roman);
+    while(i < roman_length) {
+        char letter = roman[i];
+        arabic += roman_letter_to_arabic_number(letter);
+        i++;
+    }
+
+    return arabic;
 }

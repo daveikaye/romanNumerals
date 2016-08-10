@@ -23,6 +23,8 @@ START_TEST(converts_to_arabic)
     ck_assert_int_eq(to_arabic("C"), 100);
     ck_assert_int_eq(to_arabic("D"), 500);
     ck_assert_int_eq(to_arabic("M"), 1000);
+
+    ck_assert_int_eq(to_arabic("II"), 2);
 }
 END_TEST
 

@@ -85,3 +85,8 @@ char *to_roman(int arabic) {
 
     return roman;
 }
+
+char* add(char* number1, char* number2) {
+
+    return to_roman(to_arabic(number1) + to_arabic(number2));
+}

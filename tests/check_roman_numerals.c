@@ -60,11 +60,18 @@ START_TEST(converts_to_roman)
 }
 END_TEST
 
+START_TEST(adds)
+{
+    ck_assert_str_eq(add("IV", "V"), "IX");
+}
+END_TEST
+
 Suite * roman_numerals_suite(void)
 {
     Suite *s;
     TCase *tcase_converts_to_arabic;
     TCase *tcase_converts_to_roman;
+    TCase *tcase_adds;
 
     s = suite_create("Roman Numerals");
 
@@ -77,6 +84,11 @@ Suite * roman_numerals_suite(void)
     tcase_add_checked_fixture(tcase_converts_to_roman, setup, teardown);
     tcase_add_test(tcase_converts_to_roman, converts_to_roman);
     suite_add_tcase(s, tcase_converts_to_roman);
+
+    tcase_adds = tcase_create("Adds");
+    tcase_add_checked_fixture(tcase_adds, setup, teardown);
+    tcase_add_test(tcase_adds, adds);
+    suite_add_tcase(s, tcase_adds);
 
     return s;
 }

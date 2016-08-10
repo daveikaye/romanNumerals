@@ -50,3 +50,8 @@ int to_arabic(char *roman)
 
     return arabic;
 }
+
+char *to_roman(int arabic) {
+
+    return "I";
+}

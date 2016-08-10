@@ -42,6 +42,11 @@ int roman_digit_to_arabic(char *roman, int* i_ptr, int roman_length) {
 
 int to_arabic(char *roman)
 {
+    if (roman == NULL) {
+
+        return -1;
+    }
+
     int i = 0;
     int arabic = 0;
     int roman_length = strlen(roman);
@@ -49,7 +54,7 @@ int to_arabic(char *roman)
         arabic += roman_digit_to_arabic(roman, &i, roman_length);
     }
 
-    return arabic;
+    return arabic <= 3999 && arabic > 0 ? arabic : -1;
 }
 
 char* concat_strings(char* target, char* source) {
@@ -61,6 +66,11 @@ char* concat_strings(char* target, char* source) {
 }
 
 char *to_roman(int arabic) {
+    if (arabic > 3999) {
+
+        return NULL;
+    }
+
     const int numbers[] = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
     const char* letters[] = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 

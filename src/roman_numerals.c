@@ -64,8 +64,13 @@ char *to_roman(int arabic) {
     char *roman = NULL;
 
     while(arabic > 0) {
-        roman = concat_strings(roman, "I");
-        arabic--;
+        if (arabic >= 4) {
+            roman = concat_strings(roman, "IV");
+            arabic -= 4;
+        } else {
+            roman = concat_strings(roman, "I");
+            arabic--;
+        }
     }
 
     return roman;

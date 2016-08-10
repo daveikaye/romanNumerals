@@ -61,19 +61,15 @@ char* concat_strings(char* target, char* source) {
 }
 
 char *to_roman(int arabic) {
+    const int numbers[] = { 5, 4, 1 };
+    const char* letters[] = { "V", "IV", "I" };
+
     char *roman = NULL;
 
-    while(arabic > 0) {
-        if (arabic >= 5) {
-            roman = concat_strings(roman, "V");
-            arabic -= 5;
-        }
-        else if (arabic >= 4) {
-            roman = concat_strings(roman, "IV");
-            arabic -= 4;
-        } else {
-            roman = concat_strings(roman, "I");
-            arabic--;
+    for (int i = 0; i < sizeof(numbers)/sizeof(int); i++) {
+        while (arabic >= numbers[i]) {
+            roman = concat_strings(roman, letters[i]);
+            arabic -= numbers[i];
         }
     }
 

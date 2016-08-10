@@ -32,6 +32,7 @@ END_TEST
 START_TEST(converts_to_roman)
 {
     ck_assert_str_eq(to_roman(1), "I");
+    ck_assert_str_eq(to_roman(2), "II");
 }
 END_TEST
 

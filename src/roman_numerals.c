@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdlib.h>
 
 int roman_letter_to_arabic_number(char roman_letter) {
 
@@ -51,7 +52,21 @@ int to_arabic(char *roman)
     return arabic;
 }
 
-char *to_roman(int arabic) {
+char* concat_strings(char* target, char* source) {
+    target = target == NULL ? malloc(sizeof(source)+1) : realloc(target, sizeof(source)+sizeof(target)+1);
 
-    return "I";
+    strcat(target, source);
+
+    return target;
+}
+
+char *to_roman(int arabic) {
+    char *roman = NULL;
+
+    while(arabic > 0) {
+        roman = concat_strings(roman, "I");
+        arabic--;
+    }
+
+    return roman;
 }

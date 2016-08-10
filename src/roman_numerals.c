@@ -87,6 +87,12 @@ char *to_roman(int arabic) {
 }
 
 char* add(char* number1, char* number2) {
+    int arabic1 = to_arabic(number1);
+    int arabic2 = to_arabic(number2);
 
-    return to_roman(to_arabic(number1) + to_arabic(number2));
+    if (arabic1 > 0 && arabic2 > 0) {
+        return to_roman(arabic1 + arabic2);
+    }
+
+    return NULL;
 }

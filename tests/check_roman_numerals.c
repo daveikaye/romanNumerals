@@ -63,6 +63,12 @@ END_TEST
 START_TEST(adds)
 {
     ck_assert_str_eq(add("IV", "V"), "IX");
+
+    //Check error conditions
+    ck_assert_ptr_eq(add("MMMCMXCIX", "I"), NULL);
+    ck_assert_ptr_eq(add("MMMCMXCIX", NULL), NULL);
+    ck_assert_ptr_eq(add(NULL, "I"), NULL);
+    ck_assert_ptr_eq(add(NULL, NULL), NULL);
 }
 END_TEST
 

@@ -17,6 +17,12 @@ void teardown(void)
 START_TEST(converts_to_arabic)
 {
     ck_assert_int_eq(to_arabic("I"), 1);
+    ck_assert_int_eq(to_arabic("V"), 5);
+    ck_assert_int_eq(to_arabic("X"), 10);
+    ck_assert_int_eq(to_arabic("L"), 50);
+    ck_assert_int_eq(to_arabic("C"), 100);
+    ck_assert_int_eq(to_arabic("D"), 500);
+    ck_assert_int_eq(to_arabic("M"), 1000);
 }
 END_TEST
 

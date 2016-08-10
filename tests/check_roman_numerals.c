@@ -35,6 +35,16 @@ START_TEST(converts_to_roman)
     ck_assert_str_eq(to_roman(2), "II");
     ck_assert_str_eq(to_roman(4), "IV");
     ck_assert_str_eq(to_roman(5), "V");
+    ck_assert_str_eq(to_roman(9), "IX");
+    ck_assert_str_eq(to_roman(10), "X");
+    ck_assert_str_eq(to_roman(40), "XL");
+    ck_assert_str_eq(to_roman(50), "L");
+    ck_assert_str_eq(to_roman(90), "XC");
+    ck_assert_str_eq(to_roman(100), "C");
+    ck_assert_str_eq(to_roman(400), "CD");
+    ck_assert_str_eq(to_roman(500), "D");
+    ck_assert_str_eq(to_roman(900), "CM");
+    ck_assert_str_eq(to_roman(1000), "M");
 }
 END_TEST
 

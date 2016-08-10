@@ -96,3 +96,8 @@ char* add(char* number1, char* number2) {
 
     return NULL;
 }
+
+char* subtract(char* number1, char* number2) {
+
+    return to_roman(to_arabic(number1) - to_arabic(number2));
+}
